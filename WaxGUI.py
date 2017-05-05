@@ -17,6 +17,26 @@ root.wm_title("Wax")
 tabwidth = 20
 #END VARIABLES
 
+#CLASS DEFINITIONS
+#HEADER CLASS
+class header(Entry):
+	def __init__(self):
+		space = tabwidth
+		writeheader = Entry(writepane)
+		writeheader.grid(column = 0, padx = space, sticky=W)
+
+#END HEADER CLASS
+#SUBHEADER CLASS
+class subheader(Text):
+	def __init__(self):
+		space = (tabwidth*2)
+		writesubheader = Text(writepane)
+		writesubheader.grid(column = 0, padx = space)
+
+#END SUBHEADER CLASS
+
+#END CLASS DEFINITIONS
+
 #FUNCTIONS
 def hello():
     print("hello!")
@@ -64,52 +84,37 @@ writemenubar.add_cascade(label="Help", menu=helpmenu)
 #END QUICK ACCESS
 
 #FILE PANE
-filepane = Frame(root)
+filepane = Frame(root, highlightbackground = 'black', highlightcolor = 'black', highlightthickness = 1,height = 1080, width=70)
 placeholderfile = Label(filepane, text="FUCK")
 placeholderfile.grid()
-filepane.grid(column = 0)
+filepane.grid(column = 0, columnspan = 1)
 #END FILE PANE
 
 #TASK PANE
-taskpane = Frame(root)
+taskpane = Frame(root, highlightbackground = 'black', highlightcolor = 'black', highlightthickness = 1,height = 1080, width=70)
 placeholdertask = Label(taskpane, text="FUCK")
 placeholdertask.grid()
-taskpane.grid(column = 1)
+taskpane.grid(column = 1, columnspan = 1)
 #END TASK PANE
 
 #WRITE PANE
-writepane = Frame(root)
+writepane = Frame(root, highlightbackground = 'black', highlightcolor = 'black', highlightthickness = 1,height = 1080, width=70, bg='white')
+header()
+subheader()
+writepane.grid(column = 2)
+#header = Entry(writepane)
+#header.grid(column = 0)
 
-header = Entry(writepane)
-header.grid(column = 0)
+#subheader = Text(writepane)
+#subheader.grid(column = 0, ipadx = tabwidth)
 
-subheader = Text(writepane)
-subheader.grid(column = 0, ipadx = tabwidth)
+#note = Text(writepane)
+#note.grid(column = 0, ipadx = tabwidth*2)
 
-note = Text(writepane)
-note.grid(column = 0, ipadx = tabwidth*2)
-
-writepane.grid(column = 2, ipadx = tabwidth*3)
+#writepane.grid(column = 2, ipadx = tabwidth*3)
 #END WRITE PANE
 
 root.config(menu=writemenubar)
 
 
 root.mainloop()
-#CLASS DEFINITIONS
-#FILE CLASS
-#class writecontent(root.Frame):
-#	def __init__(self, root):
-
-#END FILE CLASS
-#TASK CLASS
-#class writecontent(root.Frame):
-#	def __init__(self, root):
-
-#END TASK CLASS
-#WRITECONTENT CLASS
-#class writecontent(root.Frame):
-#	def __init__(self, root):
-
-#END WRITECONTENT CLASS
-#END CLASS DEFINITIONS
